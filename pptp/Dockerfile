@@ -14,9 +14,13 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install vim
 RUN echo "user * pass *" >> /etc/ppp/chap-secrets
 
 # config pptp
+
 # config address
 RUN echo "localip 196.168.220.1" >> /etc/pptpd.conf
 RUN echo "remoteip 196.168.220.100-203" >> /etc/pptpd.conf
+
+# config dns
+RUN echo "ms-dns 8.8.8.8" >> /etc/ppp/pptpd-options
 
 # copy file
 COPY ./forward.sh /usr/bin/forward.sh
