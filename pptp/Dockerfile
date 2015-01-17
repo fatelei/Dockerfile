@@ -8,7 +8,7 @@ RUN apt-get -y update
 
 # Install pptp
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install pptpd
-DEBIAN_FRONTEND=noninteractive apt-get -y install vim
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install vim
 
 # Add user and password
 RUN echo "user * pass *" >> /etc/ppp/chap-secrets
