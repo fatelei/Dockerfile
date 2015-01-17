@@ -18,15 +18,11 @@ RUN echo "user * pass *" >> /etc/ppp/chap-secrets
 RUN echo "localip 196.168.220.1" >> /etc/pptpd.conf
 RUN echo "remoteip 196.168.220.100-203" >> /etc/pptpd.conf
 
-#config IPV4 forwarding
-RUN echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
+# copy file
+COPY ./forward.sh /usr/bin/forward.sh
 
-RUN sysctl -p
 RUN /etc/init.d/pptpd restart
-
-#set iptables forwording rules
-RUN sed -i '1s/^/iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE/' /etc/rc.local
 
 EXPOSE 1723
 
-CMD /bin/bash
+CMD ["/usr/bin/forward.sh"]
