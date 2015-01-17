@@ -20,6 +20,7 @@ RUN echo "remoteip 196.168.220.100-203" >> /etc/pptpd.conf
 
 # copy file
 COPY ./forward.sh /usr/bin/forward.sh
+RUN chmod u+x /usr/bin/forward.sh
 
 RUN /etc/init.d/pptpd restart
 
