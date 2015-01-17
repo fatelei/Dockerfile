@@ -25,5 +25,3 @@ RUN chmod u+x /usr/bin/forward.sh
 RUN /etc/init.d/pptpd restart
 
 EXPOSE 1723
-
-CMD ["/usr/bin/forward.sh"]
