@@ -27,4 +27,6 @@ RUN /etc/init.d/pptpd restart
 #set iptables forwording rules
 RUN sed -i '1s/^/iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE/' /etc/rc.local
 
+EXPOSE 1723
+
 CMD /bin/bash
