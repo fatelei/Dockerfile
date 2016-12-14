@@ -20,6 +20,6 @@ Because the default `dataset`'s location is /data, if you want to change it, you
 ## Run
 
 ```
-docker pull
-docker run -it
+docker pull fatelei/pynlp
+docker run -it --rm fatelei/pynlp
 ```
