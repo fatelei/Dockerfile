@@ -6,11 +6,13 @@ LABEL version=1.0.0
 LABEL description="golang test"
 
 # Install go
+ARG GOVERSION
+ENV GOVERSION ${GOVERSION:-1.7.5}
 RUN apt-get update
 RUN apt-get install -y curl
 RUN cd ~
-RUN curl https://storage.googleapis.com/golang/go1.7.5.linux-amd64.tar.gz -O
-RUN tar -zxvf go1.7.5.linux-amd64.tar.gz -C /usr/local/
+RUN curl https://storage.googleapis.com/golang/go$GOVERSION.linux-amd64.tar.gz -O
+RUN tar -zxvf go$GOVERSION.linux-amd64.tar.gz -C /usr/local/
 ENV PATH $PATH:/usr/local/go/bin
 
 # Setup go environment
